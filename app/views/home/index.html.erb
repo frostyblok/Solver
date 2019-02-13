@@ -1,33 +1,18 @@
 <h1>Welcome to my first rails app</h1>
-<ul class="list-unstyled">
-  <li class="media">
-    <img src="..." class="mr-3" alt="...">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1">List-based media object</h5>
-      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-      <div>
-        <a href="/questions/1" class="btn btn-success btn-xs">view answers</a>
+<div class="container">
+  <% @questions.each do |question| %>
+    <div class="media">
+      <div class="media-left">
+        <img src="<% question.gravatar %>" class="mr-3" alt="...">
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">Owner: <%= question.email %></h4>
+          <div><%= time_ago_in_words question.created_at %> ago</div>
+          <%= question.body %>
+        <div>
+          <a href="<%= question_path(question) %>" class="btn btn-success btn-xs">view answers</a>
+        </div>
       </div>
     </div>
-  </li>
-  <li class="media my-4">
-    <img src="..." class="mr-3" alt="...">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1">List-based media object</h5>
-      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-      <div>
-        <a href="/questions/2" class="btn btn-success btn-xs">view answers</a>
-      </div>
-    </div>
-  </li>
-  <li class="media">
-    <img src="..." class="mr-3" alt="...">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1">List-based media object</h5>
-      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-      <div>
-        <a href="/questions/3" class="btn btn-success btn-xs">view answers</a>
-      </div>
-    </div>
-  </li>
-</ul>
+  <% end %>
+</div>
