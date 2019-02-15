@@ -1,15 +1,17 @@
 # README
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version:
+- 2.3.7
 
 * System dependencies
 
-* Configuration
+* Configuration:
 
 * Database creation
 
