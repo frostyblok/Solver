@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+
+  main_mailer:
+    notify_question_author:
+      subject: "You have a new answer to your question"
