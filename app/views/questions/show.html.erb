@@ -1,5 +1,5 @@
-<div class="lead well">
-  <div class="media">
+<div class="lead card">
+  <div class="media p-2">
     <a href="#">
       <img src="http://www.gravatar.com/avatar" class="mr-3" alt="...">
     </a>
@@ -7,14 +7,14 @@
       <h5 class="media-heading"><%= @question.email%></h5>
       <%= @question.body%>
       
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
+      <div class="row mt-5">
+        <div class="col-sm-8 col-sm-offset-2 media-container">
           <div>
-            <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#exampleModal">Add new ansers</button>
+            <button class="btn btn-success btn-xs mb-3" data-toggle="modal" data-target="#exampleModal">Add new ansers</button>
           </div>
           <%= render 'home/new_answer_form' %>
           <% @answers.map do |answer| %>
-          <div class="media">
+          <div class="media card mb-3 p-2 flex-row">
             <div class="media-left">
               <a href="#">
                 <img src="http://www.gravatar.com/avatar" class="mr-3" alt="...">
@@ -22,10 +22,13 @@
             </div>
             <div class="media-body">
               <h5 class="media-heading"><%= answer.email%></h5>
-              <div><%= time_ago_in_words answer.created_at %> ago</div>
+              <div class="answer-time"><%= time_ago_in_words answer.created_at %> ago</div>
               <%= answer.body%>
             </div>
           </div>
+          <% end %>
+          <% if @answers.empty? %>
+            <div class="alert alert-info">There are no answers yet</div>
           <% end %>
         </div>
       </div>

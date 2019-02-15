@@ -1,18 +1,23 @@
-<h1>Welcome to my first rails app</h1>
+<h1>Welcome to solver!</h1>
 <div class="container">
-  <% @questions.each do |question| %>
-    <div class="media">
-      <div class="media-left">
-        <img src="<% question.gravatar %>" class="mr-3" alt="...">
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading">Owner: <%= question.email %></h4>
-          <div><%= time_ago_in_words question.created_at %> ago</div>
-          <%= question.body %>
-        <div>
-          <a href="<%= question_path(question) %>" class="btn btn-success btn-xs">view answers</a>
+  <div class="media-container">
+    <% @questions.each do |question| %>
+      <div class="media card flex-row p-2 mb-3" data-target="<%= question_path(question) %>">
+        <div class="media-left">
+          <img src="http://www.gravatar.com/avatar" class="mr-3" alt="...">
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">Owner: <%= question.email %></h4>
+            <div class="answer-time"><%= time_ago_in_words question.created_at %> ago</div>
+            <%= truncate question.body, length: 300 %>
+          <div class="view-answer">
+            <a href="<%= question_path(question) %>" class="btn btn-success hidden-xs btn-xs">view answers</a>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  </div>
+  <% if @questions.empty?%>
+    <div class="aler alert-info">There are no questions right now</div>
   <% end %>
 </div>
